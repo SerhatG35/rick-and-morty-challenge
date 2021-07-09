@@ -11,16 +11,21 @@ type LocationBoxTypes = {
 }
 
 const LocationBox = ({ location, viewRef }: LocationBoxTypes) => {
-    const [characters, setCharacters] = useState<CharacterTypes[] | undefined>(undefined)
-    const [currentCharacterIndex, setCurrentCharacterIndex] = useState(6)
+    const [characters, setCharacters] = useState<CharacterTypes[]>([])
+    const [totalCharacters, setTotalCharacters] = useState(6)
 
     const getCharacters = async () => {
         const charactersInitial: CharacterTypes[] = []
-        for (let i = 0; i < location.residents.length; i++) {
-            const characterInfo: CharacterTypes = await Characters.GET(location.residents[i])
-            charactersInitial.push(characterInfo)
+        let characterCount = characters?.length
+        characterCount =
+            characterCount + 6 > location.residents.length
+                ? location.residents.length
+                : characterCount + 6
+        for (let i = 0; i < characterCount; i++) {
+            charactersInitial.push(await Characters.GET(location.residents[i]))
         }
         setCharacters(charactersInitial)
+        setTotalCharacters(characterCount)
     }
 
     useEffect(() => {
@@ -43,20 +48,14 @@ const LocationBox = ({ location, viewRef }: LocationBoxTypes) => {
             </Text>
 
             <Center flexDirection='row' alignItems='flex-start'>
-                {characters?.map((character, index) => {
-                    if (index < currentCharacterIndex)
-                        return <CharacterCard key={character.id} character={character} />
-                    else return null
-                })}
+                {characters?.map(character => (
+                    <CharacterCard key={character.id} character={character} />
+                ))}
             </Center>
             {location.residents.length > 6 && (
                 <Button
-                    display={currentCharacterIndex >= location.residents.length ? 'none' : 'block'}
-                    onClick={() =>
-                        setCurrentCharacterIndex(prev =>
-                            prev > location.residents.length ? location.residents.length : prev + 6
-                        )
-                    }
+                    display={totalCharacters >= location.residents.length ? 'none' : 'block'}
+                    onClick={getCharacters}
                 >
                     Load More
                 </Button>

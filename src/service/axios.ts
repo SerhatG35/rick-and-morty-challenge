@@ -15,7 +15,6 @@ export const Episodes = {
 export const Locations = {
     GET: async (page: number) => {
         const { data } = await API.get<LocationFethAxiosType>(`/location?page=${page}`)
-        console.log(data)
         return data
     },
 }
