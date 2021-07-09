@@ -34,7 +34,7 @@ const EpisodeBox = ({ episode, viewRef }: EpisodeBoxTypes) => {
 
     return (
         <Center
-            data-testid='EpisodeWrapper'
+            data-testid='episode-wrapper'
             as='section'
             ref={viewRef}
             border='1px solid #5252FF'
