@@ -1,2 +1,2 @@
-jest.mock('react-intersection-observer');
-jest.mock('src/service/rickAndMorty');
+jest.mock('react-intersection-observer')
+jest.mock('src/service/dataFetch')

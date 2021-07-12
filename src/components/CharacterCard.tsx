@@ -18,7 +18,7 @@ const CharacterCard = ({ character }: { character: CharacterTypes }) => {
             <LazyLoadImage
                 src={character.image}
                 width='100%'
-                height="50%"
+                height='50%'
                 alt='episode character'
                 effect='blur'
             />

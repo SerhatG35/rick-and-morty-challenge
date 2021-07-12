@@ -1,41 +1,37 @@
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
-import { characterMockResponse } from 'src/fixtures/characters';
-import { episodesMockResponse } from 'src/fixtures/episodes';
-import { locationsMockResponse } from 'src/fixtures/locations';
-import {
-  CharactersGET,
-  EpisodesGET,
-  LocationsGET,
-} from 'src/service/rickAndMorty';
+import axios from 'axios'
+import MockAdapter from 'axios-mock-adapter'
+import { characterMockResponse } from 'src/fixtures/characters'
+import { episodesMockResponse } from 'src/fixtures/episodes'
+import { locationsMockResponse } from 'src/fixtures/locations'
+import { CharactersGET, EpisodesGET, LocationsGET } from 'src/service/dataFetch'
 
-const mock = new MockAdapter(axios);
+const mock = new MockAdapter(axios)
 
 describe('Service tests', () => {
-  test('epsiodes endpoints', async () => {
-    const episodesPageNumber = 1;
-    const url = `/episode?page=${episodesPageNumber}`;
+    test('epsiodes endpoints', async () => {
+        const episodesPageNumber = 1
+        const url = `/episode?page=${episodesPageNumber}`
 
-    mock.onGet(url).reply(200, episodesMockResponse);
-    const response = await EpisodesGET(episodesPageNumber);
+        mock.onGet(url).reply(200, episodesMockResponse)
+        const response = await EpisodesGET(episodesPageNumber)
 
-    expect(response).toEqual(episodesMockResponse);
-  });
-  test('locations endpoints', async () => {
-    const episodesPageNumber = 1;
-    const url = `/location?page=${episodesPageNumber}`;
+        expect(response).toEqual(episodesMockResponse)
+    })
+    test('locations endpoints', async () => {
+        const episodesPageNumber = 1
+        const url = `/location?page=${episodesPageNumber}`
 
-    mock.onGet(url).reply(200, locationsMockResponse);
-    const response = await LocationsGET(episodesPageNumber);
+        mock.onGet(url).reply(200, locationsMockResponse)
+        const response = await LocationsGET(episodesPageNumber)
 
-    expect(response).toEqual(locationsMockResponse);
-  });
-  test('characters endpoints', async () => {
-    const url = ` https://rickandmortyapi.com/api/character/1`;
+        expect(response).toEqual(locationsMockResponse)
+    })
+    test('characters endpoints', async () => {
+        const url = ` https://rickandmortyapi.com/api/character/1`
 
-    mock.onGet(url).reply(200, characterMockResponse);
-    const response = await CharactersGET(url);
+        mock.onGet(url).reply(200, characterMockResponse)
+        const response = await CharactersGET(url)
 
-    expect(response).toEqual(characterMockResponse);
-  });
-});
+        expect(response).toEqual(characterMockResponse)
+    })
+})

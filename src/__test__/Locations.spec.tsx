@@ -1,14 +1,20 @@
-import { render, waitFor } from '@testing-library/react'
+import { cleanup, render, waitFor } from '@testing-library/react'
 import { useInView } from 'react-intersection-observer'
-import Episodes from 'src/pages/Episodes'
+import Locations from 'src/pages/Locations'
 
 const useInViewMock = useInView as jest.Mock
 
-describe('Episode page tests', () => {
+afterEach(() => {
+    jest.resetModules()
+    jest.clearAllMocks()
+    cleanup()
+})
+
+describe('Locations page tests', () => {
     test('generates a snapshot', async () => {
         useInViewMock.mockImplementation(() => [null, true])
 
-        const wrapper = render(<Episodes />)
+        const wrapper = render(<Locations />)
         await waitFor(() => wrapper)
 
         expect(wrapper).toMatchSnapshot()
