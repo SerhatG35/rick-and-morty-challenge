@@ -13,12 +13,12 @@ const ReturnToTopButton = () => {
     }
 
     window.onscroll = () => {
-        if (window.pageYOffset > 400) setButtonVisibility('flex')
+        if (window.scrollY > 400) setButtonVisibility('flex')
         else setButtonVisibility('none')
     }
 
     return (
-        <TopButton display={buttonVisibility} onClick={ToTheTop}>
+        <TopButton data-testid='navigate-top-button' display={buttonVisibility} onClick={ToTheTop}>
             <AiOutlineArrowUp />
         </TopButton>
     )

@@ -9,7 +9,7 @@ import { Center } from '../styles/styles'
 const Locations = () => {
     const [locations, setLocations] = useState<LocationTypes[]>([])
     const [page, setPage] = useState<number | null>(1)
-    const [ref, inView] = useInView()
+    const [ref, inView] = useInView({ triggerOnce: true })
 
     const fetchLocations = async () => {
         if (page !== null) {

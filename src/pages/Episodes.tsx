@@ -9,7 +9,7 @@ import { Center } from '../styles/styles'
 const Episodes = () => {
     const [episodes, setEpisodes] = useState<EpisodeTypes[]>([])
     const [page, setPage] = useState<number | null>(1)
-    const [ref, inView] = useInView()
+    const [ref, inView] = useInView({ triggerOnce: true })
 
     const fetchEpisodes = async () => {
         if (page !== null) {
@@ -19,6 +19,7 @@ const Episodes = () => {
             else setPage(data.info.next)
         } else return
     }
+
     useEffect(() => {
         fetchEpisodes()
     }, [])

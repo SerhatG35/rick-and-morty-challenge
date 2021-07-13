@@ -13,12 +13,14 @@ const Navbar = () => {
     return (
         <Navigation>
             <NavbarRoute
+                data-testid='navbar-episodes-route'
                 background={pageRoute === ROUTES.EPISODES ? '#FFDC85' : '#eee'}
                 href={ROUTES.EPISODES}
             >
                 By Episodes
             </NavbarRoute>
             <NavbarRoute
+                data-testid='navbar-locations-route'
                 background={pageRoute === ROUTES.LOCATIONS ? '#FFDC85' : '#eee'}
                 href={ROUTES.LOCATIONS}
             >

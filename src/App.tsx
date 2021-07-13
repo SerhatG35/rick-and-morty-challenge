@@ -13,7 +13,7 @@ function App() {
     return (
         <Router>
             <Suspense fallback={<div>Loading...</div>}>
-                <MainContainer>
+                <MainContainer data-testid='main-container'>
                     <GlobalStyles />
                     <Navbar />
                     <Switch>

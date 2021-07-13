@@ -34,6 +34,7 @@ const LocationBox = ({ location, viewRef }: LocationBoxTypes) => {
 
     return (
         <Center
+            data-testid='location-wrapper'
             as='section'
             ref={viewRef}
             border='1px solid #5252FF'
