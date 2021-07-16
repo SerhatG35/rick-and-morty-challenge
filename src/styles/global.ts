@@ -7,6 +7,9 @@ export const GlobalStyles = createGlobalStyle`
        outline:0;
        box-sizing:border-box;
        font-family: 'Rubik', sans-serif;
+       ::selection{
+           background: #4a4;
+       }
    }
    #root{
        margin:0 auto;

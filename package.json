@@ -1,5 +1,12 @@
 {
     "name": "rick-and-morty-challenge",
+    "jest": {
+        "coveragePathIgnorePatterns": [
+            "/node_modules/",
+            "index.tsx",
+            "reportWebVitals.ts"
+        ]
+    },
     "version": "0.1.0",
     "private": true,
     "dependencies": {

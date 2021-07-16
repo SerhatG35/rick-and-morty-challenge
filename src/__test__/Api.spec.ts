@@ -18,11 +18,11 @@ describe('Service tests', () => {
         expect(response).toEqual(episodesMockResponse)
     })
     test('locations endpoints', async () => {
-        const episodesPageNumber = 1
-        const url = `/location?page=${episodesPageNumber}`
+        const locationsPageNumber = 1
+        const url = `/location?page=${locationsPageNumber}`
 
         mock.onGet(url).reply(200, locationsMockResponse)
-        const response = await LocationsGET(episodesPageNumber)
+        const response = await LocationsGET(locationsPageNumber)
 
         expect(response).toEqual(locationsMockResponse)
     })

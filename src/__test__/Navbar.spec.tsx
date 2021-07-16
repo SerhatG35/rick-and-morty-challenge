@@ -34,22 +34,4 @@ describe('Navbar tests', () => {
         expect(wrapper.getByTestId(link.id)).toHaveAttribute('href', link.location)
         wrapper.unmount()
     })
-    // test('navigating to locations', async () => {
-    // useInViewMock.mockImplementation(() => [null, true])
-    //     await act(async () => {
-    //         const wrapper = render(<App />)
-    //         await waitFor(() => wrapper)
-
-    //         // mockAllIsIntersecting(false)
-
-    //         const locationLink = await wrapper.findByTestId('navbar-locations-route')
-
-    //         fireEvent.click(locationLink)
-
-    //         await waitFor(() =>
-    //             expect(wrapper.getByText('This is Locations Page')).toBeInTheDocument()
-    //         )
-    //         wrapper.unmount()
-    //     })
-    // })
 })
